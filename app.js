@@ -6,6 +6,7 @@ var path = require("path");
 var logger = require("morgan");
 var methodOverride = require("method-override");
 var flash = require("express-flash");
+const fileUpload = require("express-fileupload");
 //var cookieParser = require("cookie-parser");
 const session = require("express-session");
 
@@ -26,6 +27,7 @@ db.on("error", console.error.bind(console, "MongoDB connection error"));
 
 app.use(methodOverride("_method"));
 app.use(logger("dev"));
+app.use(fileUpload());
 app.use(express.json());
 app.use(
   session({ secret: "SECRETTTT", resave: false, saveUninitialized: true })

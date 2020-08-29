@@ -1,4 +1,5 @@
 const Company = require("../models/company");
+const analize = require("../utils/analysis");
 
 function getAll(req, res, next) {
   Company.find({}, (err, results) => {
@@ -12,7 +13,6 @@ function getOne(req, res, next) {
     .populate("comments.student")
     .exec((err, results) => {
       if (err) return next(err);
-      console.log(results);
       res.render("company", { results });
     });
 }
@@ -36,7 +36,7 @@ function remove(req, res, next) {
 }
 
 function addFeedback(req, res, next) {
-  Company.findOne({ _id: req.body.companyId }, (err, company) => {
+  Company.findOne({ _id: req.body.companyId }, async (err, company) => {
     if (err) return next(err);
     if (!res.locals.user)
       return res.send("Not signed in, <a href='/users/login'>Login</a>");
@@ -47,6 +47,18 @@ function addFeedback(req, res, next) {
     };
     if (!company) return res.send(":(");
     company.comments.push(comment);
+
+    {
+      let AllComments = company.comments.map((item) => item.content).join(". ");
+      console.log("All comments", AllComments);
+      let analysisResult = await analize(AllComments);
+      if (analysisResult.DocSentimentResultString != null) {
+        company.analysis =
+          analysisResult.DocSentimentPolarity +
+          analysisResult.DocSentimentValue;
+      }
+    }
+
     company.save();
     res.redirect(`/companies/${company.id}`);
   });

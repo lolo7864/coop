@@ -17,6 +17,7 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>company ID</th>
+                                        <th>Image</th>
                                         <th class="sorter-false">Name</th>
                                         <th class="sorter-false">Description</th>
                                         <th class="filter-false sorter-false">Action</th>
@@ -26,6 +27,7 @@
                                     <tr>
                                         <form action="/companies" method="post" class="form-group">
                                             <td>ID</td>
+                                            <td><input type="file" name="image"></td>
                                             <td><input type="text" name="name" class="form-control"></td>
                                             <td><input type="text" name="description" class="form-control"></td>
                                             <td><button type="submit" class="btn-primary btn">Add Company</button></td>
@@ -35,6 +37,7 @@
                                     <tr>
                                         <form action="/companies/<%=company.id%>?_method=put" method="post" class="form-group">
                                             <td><%=company._id %></td>
+                                            <td>image here</td>
                                             <td>
                                                 <input type="text" name="name" class="form-control" value="<%=company.name %>">
                                             </td>
