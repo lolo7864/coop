@@ -1,0 +1,13 @@
+<%- include('./partials/head'); -%>
+<%- include('./partials/nav'); -%>
+
+<%# CONTENT STARTS HERE  #%>
+<%if (locals.user && locals.user.isAdmin){%>
+    ADMIN PAGE
+<% }else{ %>
+   Not Logged in as an admin
+<% } %>
+
+<%# CONTENT ENDS HERE  #%>
+<%- include('./partials/footer'); -%>
+<%- include('./partials/scripts.ejs'); -%>

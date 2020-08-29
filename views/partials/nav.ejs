@@ -1,0 +1,29 @@
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+        <div class="container"><img src="/img/coop.png" style="width: 101px;"><a class="navbar-brand" href="/" style="font-size: 42px;padding: 27px;">SACOOP</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="/">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/companies">Companies</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/about">About</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/contact">Contact</a></li>
+
+                    <% if (locals.user) { %>
+
+                      <li class="nav-item" role="presentation"><a class="nav-link" href="/users/login"></a></li>
+                    <li class="nav-item dropdown show">
+                      <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true" href="#">Welcome <%= locals.user.username%>!</a>
+                      <div class="dropdown-menu show" role="menu">
+                        <a class="dropdown-item" role="presentation" href="/users/profile/">Profile</a>
+                        <a class="dropdown-item" role="presentation" href="/users/logout">Logout</a>
+                    </li>
+                      
+                    <% } else { %>
+                      <li class="nav-item" role="presentation"><a class="nav-link" href="/users/login">Login</a></li>
+                    <% } %>
+
+
+                </ul>
+        </div>
+        </div>
+    </nav>

@@ -1,0 +1,23 @@
+<%- include('./partials/head'); -%>
+<%- include('./partials/nav'); -%>
+
+<%# CONTENT STARTS HERE  #%>
+<div class="d-flex flex-sm-wrap container">
+<% results.forEach(company=>{ %>
+    <div>                                                                                                                                                                                                 
+    <div class="card" style="margin: 10px;width: 18rem;">                                                                                                                                                       
+    <img class="card-img-top" src="..." alt="Card image cap">                                                                                                                                                   
+    <div class="card-body">                                                                                                                                                                                     
+    <h5 class="card-title"><%= company.name %></h5>                                                                                                                                                                  
+    <p class="card-text"><%=company.description %></p>                                                                                 
+    <a href="<%=company.url%>" class="btn btn-primary">Go To Company Page</a>                                                                                                                                                    
+    </div>                                                                                                                                                                                                      
+    </div>                                                                                                                                                                                                      
+    </div>                                                                                                                                                                                                          
+
+    <% }) %>
+</div>
+
+<%# CONTENT ENDS HERE  #%>
+<%- include('./partials/footer'); -%>
+<%- include('./partials/scripts.ejs'); -%>

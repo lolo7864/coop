@@ -1,0 +1,89 @@
+<%- include('./partials/head'); -%>
+<%- include('./partials/nav'); -%>
+
+<%# CONTENT STARTS HERE  #%>
+
+<div class="login-clean">
+    <h1 class="text-center"><%= results.name %> profile</h1>
+    <section id="model-details"><i class="icon ion-android-microphone"></i>
+        <div class="container" style="display:flex">
+            <div class="row">
+                <div class="col col-md-4">
+                    <header></header>
+                    <h1>About</h1>    
+                    <ul id="imageGallery">
+                        <li>
+                            <img  class="img-fluid" src="<%= results.image%>" alt="<%= results.name %>"  />
+                        </li>
+                    </ul>
+                </div> 
+                <div class="profile-block escort-bio">
+                    
+                    <div id="bio-content" class="bio-container">
+                        <p><%= results.description %></p>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Community Chat</h3>
+                    </div>
+                    <div class="card-body" style="">
+                        <ul class="list-group">
+                            <% results.comments.forEach(comment=>{ %>
+                            <li class="list-group-item" style="margin-bottom:6px;">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <div class="media" style="overflow:visible;">
+                                            <div class="media-body" style="overflow:visible;">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <p>
+                                                            <a href="#"><%= comment.student.username%>:</a> <%=comment.content%><br>
+                                                            <small class="text-muted"><%=comment.date %></small>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <% }) %>
+                            <form class="" method="post" action="/companies/feedback" style="width:100%; max-width:1000px; padding:10px 5px; margin:0">
+                                <div class="input-group mb-3">
+                                    <input type="text" name="companyId" style="display:none" value="<%=results._id%>">
+                                    <input type="text" class="form-control" name="content" placeholder="Message" aria-label="Send a message" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="submit">Send</button>
+                                    </div>
+                                </div>
+
+
+                            </form>
+                    </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-md-3"> <div class="profile-block">
+                    <h3>Satisfaction</h3>
+                    
+                    <ul>
+                        <li><span class="font-400">Grade satisfaction: </span><span class="profile-right">60%</span> </li>
+                        <li><span class="font-400">Workplace satisfaction: </span><span class="profile-right">80%</span> </li>
+                        
+                    </ul>
+                    
+            </div></div>
+        </div>
+</div>
+</section>
+</div>
+
+
+
+<%# CONTENT ENDS HERE  #%>
+<%- include('./partials/footer'); -%>
+<%- include('./partials/scripts.ejs'); -%>

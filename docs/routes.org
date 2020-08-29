@@ -1,0 +1,18 @@
+#+TITLE: Routes
+
+| Req    | route                   | params               | description                | redirect     |
+|--------+-------------------------+----------------------+----------------------------+--------------|
+| GET    | /companies/             | null                 | get companies list page    | /companies   |
+| GET    | /companies/:id          | null                 | get company page           | /company/:id |
+| POST   | /companies              | {name, description}  | Create a compnay           | /admin       |
+| DELETE | /companies/:id          | null                 | Delete company             | /admin       |
+| PUT    | /companies/:id          | {name, description}  | Update company             | /admin       |
+|--------+-------------------------+----------------------+----------------------------+--------------|
+| GET    | /companies/:id/comments | null                 | get company comments       | /company/:id |
+|--------+-------------------------+----------------------+----------------------------+--------------|
+| GET    | /users                  | null                 | get users list             | /users       |
+| GET    | /users/:id              | null                 | get user comments and data | /users/:id   |
+| POST   | /users/                 | {username, password} | create user                | /            |
+| DELETE | /users/:id              | nul                  | delete user                | /users       |
+|--------+-------------------------+----------------------+----------------------------+--------------|
+|        |                         |                      |                            |              |

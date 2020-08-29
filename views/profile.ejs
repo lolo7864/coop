@@ -1,0 +1,122 @@
+<%- include('./partials/head'); -%>
+<%- include('./partials/nav'); -%>
+
+<%# CONTENT STARTS HERE  #%>
+<% if (locals.user) {%>
+<%if (locals.user.isAdmin==true){%>
+<%#==========================================================ADMIN PAGE=======================#%>
+<div>
+    <h1 class="text-center">Admin controls&nbsp;</h1>
+    <div>
+        <div class="container">
+            <div class="card" id="TableSorterCard">
+                <div class="row">
+                    <div class="col-12">
+                        <div>
+                            <table class="table table tablesorter" id="ipi-table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>company ID</th>
+                                        <th class="sorter-false">Name</th>
+                                        <th class="sorter-false">Description</th>
+                                        <th class="filter-false sorter-false">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <form action="/companies" method="post" class="form-group">
+                                            <td>ID</td>
+                                            <td><input type="text" name="name" class="form-control"></td>
+                                            <td><input type="text" name="description" class="form-control"></td>
+                                            <td><button type="submit" class="btn-primary btn">Add Company</button></td>
+                                        </form>
+                                    </tr>
+                                    <% companies.forEach(company=>{ %>
+                                    <tr>
+                                        <form action="/companies/<%=company.id%>?_method=put" method="post" class="form-group">
+                                            <td><%=company._id %></td>
+                                            <td>
+                                                <input type="text" name="name" class="form-control" value="<%=company.name %>">
+                                            </td>
+                                            <td>
+                                                <input type="text" name="description" class="form-control" value="<%=company.description%>">
+                                            </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                            <a href="/companies/<%=company.id %>/DELETE" class="btn btn-danger">Delete</a>
+                                        </td>
+                                        </form>
+                                    </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <%#==========================================================USER PAGE=======================#%>
+    <% }else{ %>
+    <div style="padding: 8px 16px;">
+        <div class="container" style="margin: 0px;padding: 17px;">
+            <div class="row">
+                <div class="col-md-12 offset-md-0" style="width: 696px;"><img src="/img/profile.png" style="width: 113px;margin: 40px;padding: -5px;"><small style="font-size: 34px;margin: 0;padding: 0;"><%= locals.user.username %></small></div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 8px 16px;">
+        <div class="container">
+            <div>
+                <ul class="nav nav-tabs">
+                </ul>
+                <div class="container">
+                    <form method="post" action="/companies/feedback">
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <h1 style="margin: 18px;font-size: 27px;">Coop Feedback</h1>
+                            </div>
+                        </div>
+                        <div class="form-row" style="width: 532px;">
+                            <div class="col">
+                                <label for="orgnizations" > Choose organization </label>
+                                <select id="orgnizations" class="is-primary" name="companyId">
+                                    <% companies.forEach(company=>{ %>
+                                    <option value="<%= company._id %>"><%= company.name %></option>
+                                    <%})%>
+                                    
+                            </div>
+                        </div>
+                </div>
+                <div class="form-row" style="width: 532px;">
+                    <div class="col" style="width: 442px;">
+                        <label class="col-form-label" style="width: 519px;">Tell us About you summer coop experience in the organization :</label></div>
+                </div>
+                <div class="form-row" style="width: 532px;">
+                    <div class="col"><textarea name="comment" class="form-control" style="width: 664px;height: 206px;"></textarea></div>
+                </div>
+                <div class="form-row" style="width: 532px;">
+                    <div class="col">
+                        <div class="btn-group" role="group" style="margin: 10px">
+                            <button class="btn btn-primary" type="submit" style="background-color: rgb(160,193,228);">Submit</button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% }%>
+<% } else { %>
+You are Not Logged in.
+
+<% } %>
+
+
+
+<%# CONTENT ENDS HERE  #%>
+<%- include('./partials/footer'); -%>
+<%- include('./partials/scripts.ejs'); -%>
