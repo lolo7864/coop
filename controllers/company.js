@@ -74,6 +74,7 @@ function update(req, res, next) {
     _id: req.params.id,
     name: req.body.name,
     description: req.body.description,
+    image: req.body.profile_pic,
   };
 
   Company.findOneAndUpdate({ _id: req.params.id }, update, (err) => {
