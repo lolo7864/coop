@@ -27,7 +27,7 @@
                                     <tr>
                                         <form action="/companies" method="post" class="form-group">
                                             <td>ID</td>
-                                            <td><input type="file" name="image"></td>
+                                            <td><input type="text" class="form-control" name="profile_pic"></td>
                                             <td><input type="text" name="name" class="form-control"></td>
                                             <td><input type="text" name="description" class="form-control"></td>
                                             <td><button type="submit" class="btn-primary btn">Add Company</button></td>
@@ -35,19 +35,21 @@
                                     </tr>
                                     <% companies.forEach(company=>{ %>
                                     <tr>
-                                        <form action="/companies/<%=company.id%>?_method=put" method="post" class="form-group">
+                                        <form ref="uploadForm" encType="multipart/form-data" action="/companies/<%=company.id%>?_method=put" method="post" class="form-group">
                                             <td><%=company._id %></td>
-                                            <td>image here</td>
+                                            <td>
+                                                <input type="text" name="name" class="form-control" value="<%=company.image%>">
+                                            </td>
                                             <td>
                                                 <input type="text" name="name" class="form-control" value="<%=company.name %>">
                                             </td>
                                             <td>
                                                 <input type="text" name="description" class="form-control" value="<%=company.description%>">
                                             </td>
-                                        <td>
-                                            <button type="submit" class="btn btn-primary">Update</button>
-                                            <a href="/companies/<%=company.id %>/DELETE" class="btn btn-danger">Delete</a>
-                                        </td>
+                                            <td>
+                                                <button type="submit" class="btn btn-primary">Update</button>
+                                                <a href="/companies/<%=company.id %>/DELETE" class="btn btn-danger">Delete</a>
+                                            </td>
                                         </form>
                                     </tr>
                                     <% }) %>
@@ -76,7 +78,7 @@
                 <ul class="nav nav-tabs">
                 </ul>
                 <div class="container">
-                    <form method="post" action="/companies/feedback">
+                    <form enctype="multipart/form-data" method="post" action="/companies/feedback">
                         <div class="form-row">
                             <div class="col-md-12">
                                 <h1 style="margin: 18px;font-size: 27px;">Coop Feedback</h1>
@@ -98,7 +100,7 @@
                         <label class="col-form-label" style="width: 519px;">Tell us About you summer coop experience in the organization :</label></div>
                 </div>
                 <div class="form-row" style="width: 532px;">
-                    <div class="col"><textarea name="comment" class="form-control" style="width: 664px;height: 206px;"></textarea></div>
+                    <div class="col"><textarea name="content" class="form-control" style="width: 664px;height: 206px;"></textarea></div>
                 </div>
                 <div class="form-row" style="width: 532px;">
                     <div class="col">

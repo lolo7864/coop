@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 var CompanySchema = new Schema({
   name: { type: String, required: true },
   description: { type: String },
+  image: { type: String },
   comments: [
     {
       student: { type: Schema.Types.ObjectId, ref: "User" },

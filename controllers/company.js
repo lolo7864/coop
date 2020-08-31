@@ -21,7 +21,9 @@ function add(req, res, next) {
   let company = new Company({
     name: req.body.name,
     description: req.body.description,
+    image: req.body.profile_pic,
   });
+
   company.save((err) => {
     if (err) return next(err);
     res.redirect("/users/profile");
@@ -49,13 +51,16 @@ function addFeedback(req, res, next) {
     company.comments.push(comment);
 
     {
+      //combine all comments
       let AllComments = company.comments.map((item) => item.content).join(". ");
-      console.log("All comments", AllComments);
+      //run the analysis API
       let analysisResult = await analize(AllComments);
+      //check that analysis works
       if (analysisResult.DocSentimentResultString != null) {
         company.analysis =
           analysisResult.DocSentimentPolarity +
           analysisResult.DocSentimentValue;
+        //saves results to company's database
       }
     }
 
