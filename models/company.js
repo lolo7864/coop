@@ -13,7 +13,7 @@ var CompanySchema = new Schema({
       date: { type: Date, default: Date.now },
     },
   ],
-  analysis: { type: String, default: "" },
+  analysis: { type: Object, default: {} },
 });
 
 // Virtual for Company's URL

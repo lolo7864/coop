@@ -55,16 +55,14 @@ function addFeedback(req, res, next) {
       let AllComments = company.comments.map((item) => item.content).join(". ");
       //run the analysis API
       let analysisResult = await analize(AllComments);
+      console.log(analysisResult);
       //check that analysis works
       if (analysisResult.DocSentimentResultString != null) {
-        company.analysis =
-          analysisResult.DocSentimentPolarity +
-          analysisResult.DocSentimentValue;
-        //saves results to company's database
+        company.analysis = analysisResult;
       }
     }
 
-    company.save();
+    company.save(); //saves results to company's database
     res.redirect(`/companies/${company.id}`);
   });
 }

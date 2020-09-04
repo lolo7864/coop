@@ -77,8 +77,11 @@
                     </ul>
                     <h3>Sentimntal Analysis</h3>
                     <ul>
-                        <li><span class="font-400">Analysis Result: </span>
-                            <span class="profile-right"><%= +results.analysis %></span> </li>
+                        <li><span class="font-400">Analysis Result: </span><span class="profile-right"><%=
+                                                                                                           `${results.analysis.DocSentimentPolarity} ${Math.round(results.analysis.DocSentimentValue*100)/100} `
+                                                            %></span> </li>
+
+                        <li><img src="/img/analysisBar.jpg" alt="" /></li>
                         
                     </ul>
                     
