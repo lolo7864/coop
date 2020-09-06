@@ -82,7 +82,7 @@
 
                         <br/>
                       <!--Choosing emoji-->    
-                    <%if ((results.analysis)?.length){%>
+                    <%if ((results.analysis)?.DocSentimentResultString){%>
                       <% if (results.analysis.DocSentimentResultString=='positive'){%>
                         <img src="/img/happy.jpg"/> 
                       <%}else if (results.analysis.DocSentimentResultString=='negative'){%>
