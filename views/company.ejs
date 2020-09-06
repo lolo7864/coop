@@ -70,15 +70,27 @@
             <div class="col-12 col-md-3"> <div class="profile-block">
                     <h3>Sentimntal Analysis</h3>
                     <ul>
-<<<<<<< HEAD
                         <li><span class="font-400">Analysis Result: </span><span class="profile-right">
 
                       <%if (results.analysis){%>
                             <%= `${results.analysis.DocSentimentResultString} (${results.analysis.DocSentimentPolarity} ${Math.round(results.analysis.DocSentimentValue*100)/100} )` %>
                       <% } %>
                         %></span>
->>>>>>> 2e5a870... fixed bug
                         </li>
+                        </span>
+                        </li>
+
+                        <br/>
+                      <!--Choosing emoji-->    
+                    <%if (results.analysis){%>
+                      <% if (results.analysis.DocSentimentResultString=='positive'){%>
+                        <img src="/img/happy.jpg"/> 
+                      <%}else if (results.analysis.DocSentimentResultString=='negative'){%>
+                        <img src="/img/sad.jpg"/> 
+                      <% }else{ %>
+                        <img src="/img/neutral.jpg"/> 
+                      <% } %>
+                    <% } %>
                         <!-- <%= JSON.stringify(results.analysis) %> -->
 
                         <li><img src="/img/analysisBar.jpg" alt="" /></li>
