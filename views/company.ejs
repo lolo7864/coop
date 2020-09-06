@@ -72,7 +72,9 @@
                     <ul>
                         <li><span class="font-400">Analysis Result: </span><span class="profile-right">
 
+                      <%if (results.analysis){%>
                             <%= `${results.analysis.DocSentimentResultString} (${results.analysis.DocSentimentPolarity} ${Math.round(results.analysis.DocSentimentValue*100)/100} )` 
+                      <% } %>
                         %></span>
                         </li>
 

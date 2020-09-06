@@ -5,8 +5,11 @@ function getAll(req, res, next) {
   Company.find({}, (err, results) => {
     if (err) return next(err);
     results = results.sort((a, b) => {
-      console.log(a.analysis.DocSentimentValue, a.name);
-      return a.analysis.DocSentimentValue - b.analysis.DocSentimentValue;
+      if (a.analysis && b.analysis) {
+        return a.analysis.DocSentimentValue - b.analysis.DocSentimentValue;
+      } else {
+        return 0;
+      }
     });
     res.render("companies", { results });
   });
