@@ -70,9 +70,14 @@
             <div class="col-12 col-md-3"> <div class="profile-block">
                     <h3>Sentimntal Analysis</h3>
                     <ul>
-                        <li><span class="font-400">Analysis Result: </span><span class="profile-right"><%=
-                                                                                                           `${results.analysis.DocSentimentResultString} (${results.analysis.DocSentimentPolarity} ${Math.round(results.analysis.DocSentimentValue*100)/100} )` 
-                                                                                                           %></span>
+<<<<<<< HEAD
+                        <li><span class="font-400">Analysis Result: </span><span class="profile-right">
+
+                      <%if (results.analysis){%>
+                            <%= `${results.analysis.DocSentimentResultString} (${results.analysis.DocSentimentPolarity} ${Math.round(results.analysis.DocSentimentValue*100)/100} )` 
+                      <% } %>
+                        %></span>
+>>>>>>> 2e5a870... fixed bug
                         </li>
                         <!-- <%= JSON.stringify(results.analysis) %> -->
 
