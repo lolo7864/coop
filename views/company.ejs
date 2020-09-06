@@ -75,11 +75,12 @@
                       <%if (results.analysis){%>
                             <%= `${results.analysis.DocSentimentResultString} (${results.analysis.DocSentimentPolarity} ${Math.round(results.analysis.DocSentimentValue*100)/100} )` %>
                       <% } %>
-                        %></span>
+                        </span>
                         </li>
 
                         <br/>
                       <!--Choosing emoji-->    
+                    <%if (results.analysis){%>
                       <% if (results.analysis.DocSentimentResultString=='positive'){%>
                         <img src="/img/happy.jpg"/> 
                       <%}else if (results.analysis.DocSentimentResultString=='negative'){%>
@@ -87,6 +88,7 @@
                       <% }else{ %>
                         <img src="/img/neutral.jpg"/> 
                       <% } %>
+                    <% } %>
                         <!-- <%= JSON.stringify(results.analysis) %> -->
 
                         <li><img src="/img/analysisBar.jpg" alt="" /></li>
