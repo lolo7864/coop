@@ -80,7 +80,7 @@
 
                         <br/>
                       <!--Choosing emoji-->    
-                    <%if (results.analysis){%>
+                    <%if ((results.analysis)?.length){%>
                       <% if (results.analysis.DocSentimentResultString=='positive'){%>
                         <img src="/img/happy.jpg"/> 
                       <%}else if (results.analysis.DocSentimentResultString=='negative'){%>
@@ -89,7 +89,6 @@
                         <img src="/img/neutral.jpg"/> 
                       <% } %>
                     <% } %>
-                        <!-- <%= JSON.stringify(results.analysis) %> -->
 
                         <li><img src="/img/analysisBar.jpg" alt="" /></li>
                         
