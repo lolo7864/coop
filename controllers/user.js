@@ -15,7 +15,7 @@ function add(req, res, next) {
 function getProfile(req, res, next) {
   Company.find({}, (err, companies) => {
     if (err) return next(err);
-    res.render("profile", { companies });
+    res.render("profile", { isFeedbackAdded: false, companies });
   });
 }
 

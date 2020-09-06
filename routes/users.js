@@ -9,7 +9,7 @@ var userController = require("../controllers/user");
 //});
 
 router.get("/login", function (req, res, next) {
-  res.render("login");
+  res.render("login", { signup: req.query.signup });
   delete req.locals.error;
 });
 

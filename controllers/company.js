@@ -69,8 +69,22 @@ function addFeedback(req, res, next) {
     }
 
     company.save(); //saves results to company's database
-    res.redirect(`/companies/${company.id}`); //redirect to refresh the page
+    Company.find({}, async (err, companies)=>{
+      res.render('profile', {isFeedbackAdded: true, companies  });//CANCEllED: redirect to refresh the page
+    })
+                                                  //for no reason: refresh the page :|
   });
+}
+
+function deleteComments(req, res, next) {
+  Company.findOneAndUpdate(
+    { _id: req.params.id },
+    { comments: [], analysis: undefined },
+    (err) => {
+      if (err) return next(err);
+      res.redirect("/users/profile");
+    }
+  );
 }
 
 function update(req, res, next) {
@@ -87,4 +101,12 @@ function update(req, res, next) {
   });
 }
 
-module.exports = { getAll, getOne, addFeedback, add, remove, update };
+module.exports = {
+  getAll,
+  getOne,
+  addFeedback,
+  add,
+  remove,
+  update,
+  deleteComments,
+};

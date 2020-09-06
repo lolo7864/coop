@@ -1,9 +1,15 @@
 <%- include('./partials/head'); -%>
 <%- include('./partials/nav'); -%>
 
+<% if (isFeedbackAdded) {%>
+  <center><div class="alert alert-success" role="alert"> Comment Add Successfully </div></center>
+<%}%>
+
 <%# CONTENT STARTS HERE  #%>
 <% if (locals.user) {%>
 <%if (locals.user.isAdmin==true){%>
+
+
 <%#==========================================================ADMIN PAGE=======================#%>
 <div>
     <h1 class="text-center">Admin controls&nbsp;</h1>
@@ -49,6 +55,7 @@
                                             <td>
                                                 <button type="submit" class="btn btn-primary">Update</button>
                                                 <a href="/companies/<%=company.id %>/DELETE" class="btn btn-danger">Delete</a>
+                                                <a href="/companies/<%=company.id %>/comments/DELETE" class="btn btn-danger">Delete Comments (<%= company.comments.length%>)</a>
                                             </td>
                                         </form>
                                     </tr>

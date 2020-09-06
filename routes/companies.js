@@ -26,4 +26,8 @@ router.get("/:id/DELETE", function (req, res, next) {
   companyController.remove(req, res, next);
 });
 
+router.get("/:id/comments/DELETE", function (req, res, next) {
+  companyController.deleteComments(req, res, next);
+});
+
 module.exports = router;
