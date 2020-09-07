@@ -12,6 +12,7 @@ const session = require("express-session");
 
 var app = express();
 
+
 var indexRouter = require("./routes/index");
 //var adminRouter = require("./routes/admin");//TODO:DELETE
 var companiesRouter = require("./routes/companies");
